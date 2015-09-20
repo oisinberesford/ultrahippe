@@ -1,0 +1,17 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link type="text/css" rel="stylesheet" href="css/simple.css"/>
+</head>
+<body>
+	<h1>STAR WARS</h1>
+	<p>THIS IS MY WEBSITE</p>
+	<p>CLICK ON A LINK TO VIST A PAGE</p>
+	<ul>
+	
+		<li><a href="about me.html"> About Me</a></li>
+		<li><a href="books.html">My favorite books</a></li>
+	</ul>
+	</body>
+	</html>    
