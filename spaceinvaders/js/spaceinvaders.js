@@ -526,12 +526,16 @@ PlayState.prototype.draw = function(game, dt, ctx) {
     ctx.clearRect(0, 0, game.width, game.height);
     
     //  Draw ship.
-    ctx.fillStyle = '#999999';
+    //ctx.fillStyle = '#999999';
+    ctx.fillStyle = 'red';
     ctx.fillRect(this.ship.x - (this.ship.width / 2), this.ship.y - (this.ship.height / 2), this.ship.width, this.ship.height);
 
     //  Draw invaders.
-    ctx.fillStyle = '#006600';
+    var colors = ['red','blue','green','yellow','pink','brown']
+    
     for(var i=0; i<this.invaders.length; i++) {
+        var rand = Math.floor(Math.random() * colors.length )
+         ctx.fillStyle = colors[rand]
         var invader = this.invaders[i];
         ctx.fillRect(invader.x - invader.width/2, invader.y - invader.height/2, invader.width, invader.height);
     }
