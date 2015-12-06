@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop - lesson 10: finishing up</title>
+    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="480" height="320"></canvas>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    
+    function drawEye(x, y) {
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI*2);
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.arc(x, y, 1, 0, Math.PI*2);
+      ctx.fillStyle = "black";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawNose(x,y) {
+      ctx.beginPath();
+      ctx.arc(x, y, 2, 0, Math.PI*2);
+      ctx.fillStyle = "black";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawHair(x,y) {
+      ctx.beginPath();
+      ctx.moveTo(x, y-15);
+      ctx.lineTo(x, y-25);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(x-5, y-15);
+      ctx.lineTo(x-10, y-23);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(x+5, y-15);
+      ctx.lineTo(x+10, y-23);
+      ctx.stroke();
+      ctx.closePath();   
+    }
+    function drawMouth(x,y){
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x+10, y);
+      ctx.stroke();
+      ctx.closePath();
+
+    }
+    function drawHead(x,y) {
+      ctx.beginPath();
+      ctx.arc(x, y, 15, 0, Math.PI*2);
+      ctx.fillStyle = "#ffe0bd";
+      ctx.fill();
+
+    
+      drawHair(x,y);
+      drawEye(x-7,y);
+      drawEye(x+7, y);
+      drawNose(x, y+3);
+      drawMouth(x,y+8)
+      ctx.closePath();
+    }
+
+    function drawBody(x, y) {
+      ctx.beginPath();
+      ctx.rect(x-10, y, 20, 20);
+      ctx.fillStyle = "lightblue";
+      ctx.fill();
+      ctx.closePath();
+    }
+    
+    function drawLegs(x,y) {
+      ctx.beginPath();
+      ctx.rect(x-10, y, 20, 20);
+      ctx.fillStyle = "green";
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+      ctx.lineTo(x, y+20);
+      ctx.stroke();
+      ctx.closePath();      
+    }
+
+    function drawShoes(x, y) {
+      // right shoe - with gradient!
+      ctx.beginPath();
+      var gradient = ctx.createLinearGradient(x-15, 0, x, 0);
+      gradient.addColorStop(0,"black");
+      gradient.addColorStop(1,"grey");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(x-15,y,15,5);
+      ctx.closePath();
+
+      // left shoe
+      ctx.beginPath();
+      var gradient = ctx.createLinearGradient(x, 0, x+15, 0);
+      gradient.addColorStop(0,"grey");
+      gradient.addColorStop(1,"black");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(x,y,15,5);
+      ctx.closePath();
+    }
+
+    function drawUltraHippee(x, y) {
+      drawHead(x,y);
+      drawBody(x, y+15);
+      drawLegs(x, y+30);
+      drawShoes(x, y+50);
+    }
+    
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);    
+        var x = canvas.width/2;
+        var y = canvas.height/2;
+        drawUltraHippee(x, y);
+    }
+
+    draw();
+</script>
+
+</body>
+</html>
