@@ -87,10 +87,25 @@ function collisionDetection() {
 }
 
 function drawBall() {
+    // draws the head
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#2f2b27";
     ctx.fill();
+    ctx.closePath();
+
+    //draws the face
+    // TODO - use rgb color: rgb(240, 203, 195)
+    ctx.beginPath();
+    ctx.rect(x-5,y-5,10,8);
+    ctx.fillStyle = "#ffffcc";
+    ctx.fill();
+    ctx.closePath();
+   //draws one eye
+    ctx.beginPath();
+    ctx.moveTo(x+2,y+2);
+    ctx.lineTo(x+2,y-5);
+    ctx.stroke();
     ctx.closePath();
 }
 function drawPaddle() {
