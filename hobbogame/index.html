@@ -95,10 +95,9 @@ function drawBall() {
     ctx.closePath();
 
     //draws the face
-    // TODO - use rgb color: rgb(240, 203, 195)
     ctx.beginPath();
     ctx.rect(x-5,y-5,10,8);
-    ctx.fillStyle = "#ffffcc";
+    ctx.fillStyle = "rgb(240,203,195)";
     ctx.fill();
     ctx.closePath();
    //draws one eye
@@ -107,7 +106,15 @@ function drawBall() {
     ctx.lineTo(x+2,y-5);
     ctx.stroke();
     ctx.closePath();
+  //draws another eye
+    ctx.beginPath();
+    ctx.moveTo(x-2,y+2);
+    ctx.lineTo(x-2,y-5);
+    ctx.stroke();
+    ctx.closePath();
+
 }
+  
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
@@ -150,6 +157,7 @@ function draw() {
     drawPaddle();
     drawScore();
     drawLives();
+/*
     collisionDetection();
     
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -188,6 +196,7 @@ function draw() {
     x += dx;
     y += dy;
     requestAnimationFrame(draw);
+*/
 }
 
 draw();
